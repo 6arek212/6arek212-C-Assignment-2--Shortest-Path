@@ -79,7 +79,7 @@ int shortestPath(int i, int j)
         }
     }
 
-    for (int k = 1; k < N; k++)
+    for (int k = 0; k < N; k++)
     {
         for (int i = 0; i < N; i++)
         {
