@@ -92,7 +92,7 @@ int shortestPath(int i, int j)
         {
             for (int j = 0; j < N; j++)
             {
-                if (temp[i][k] == INT_MAX || temp[k][j] == INT_MAX && temp[i][k] + temp[k][j] < temp[i][j])
+                if (temp[i][k] != INT_MAX && temp[k][j] != INT_MAX && temp[i][k] + temp[k][j] < temp[i][j])
                     temp[i][j] = temp[i][k] + temp[k][j];
             }
         }
