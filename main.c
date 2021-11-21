@@ -11,13 +11,8 @@ void printOptions()
     printf("D- Exist  \n");
 }
 
-void main()
+int main()
 {
-
-    int mat[3][3] = {{0, 2, 3},
-                     {10, 2, 3},
-                     {2, 0, 4}};
-
     char choice = ' ';
     int i, j;
 
@@ -65,4 +60,5 @@ void main()
             break;
         }
     }
+    return 1;
 }
