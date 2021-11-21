@@ -22,7 +22,6 @@ int graph[N][N];
 //     {5, INT_MAX, 0, 1},
 //     {2, INT_MAX, INT_MAX, 0}}
 
-
 void scanNewMatrix()
 {
     for (int i = 0; i < N; i++)
@@ -33,6 +32,8 @@ void scanNewMatrix()
             {
                 graph[i][j] = INT_MAX;
             }
+            else if (i == j)
+                graph[i][j] = 0;
         }
 }
 
@@ -50,8 +51,6 @@ void printMatrix()
     printf("\n");
 }
 
-
-
 int isTherePath(int i, int j)
 {
     if (shortestPath(i, j) != -1)
@@ -59,18 +58,12 @@ int isTherePath(int i, int j)
     return 0;
 }
 
-
-
-
 int min(int x, int y)
 {
     if (x <= y)
         return x;
     return y;
 }
-
-
-
 
 //floydWarshall
 int shortestPath(int i, int j)
@@ -94,9 +87,6 @@ int shortestPath(int i, int j)
             {
                 if (temp[i][k] != INT_MAX && temp[k][j] != INT_MAX && temp[i][k] + temp[k][j] < temp[i][j])
                     temp[i][j] = temp[i][k] + temp[k][j];
-
-                else if (temp[i][k] != INT_MAX  && temp[i][k] + temp[k][j] < temp[i][j])
-                    temp[i][j] = temp[i][k];
             }
         }
     }
