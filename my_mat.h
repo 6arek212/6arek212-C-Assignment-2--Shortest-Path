@@ -1,6 +1,6 @@
 
 
-#define N 10
+#define N 3
 
 
 int isTherePath( int i, int j);
