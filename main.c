@@ -38,9 +38,9 @@ int main()
             //printf("\n");
 
             if (isTherePath(i, j))
-                printf("True \n");
+                printf("True\n");
             else
-                printf("False \n");
+                printf("False\n");
             break;
 
         case 'C':
@@ -49,7 +49,7 @@ int main()
             //printf("enter j : \n");
             scanf("%d",&j);
             //printf("\n");
-            printf("%d \n", shortestPath(i, j));
+            printf("%d\n", shortestPath(i, j));
             break;
 
         case 'K':
