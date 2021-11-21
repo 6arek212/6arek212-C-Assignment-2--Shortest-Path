@@ -26,10 +26,10 @@ void scanNewMatrix()
         for (int j = 0; j < N; j++)
         {
             scanf(" %d", &graph[i][j]);
-            if (graph[i][j] == 0 && i != j)
-            {
-                graph[i][j] = INT_MAX;
-            }
+            // if (graph[i][j] == 0 && i != j)
+            // {
+            //     graph[i][j] = INT_MAX;
+            // }
         }
 }
 
@@ -81,28 +81,32 @@ int shortestPath(int i, int j)
         {
             for (int j = 0; j < N; j++)
             {
-                // if (temp[k - 1][i][j] != 0 && temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0)
-                //     temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
+                if (temp[k - 1][i][j] != 0 && temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0)
+                    temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
 
-                // else if (temp[k - 1][i][j] != 0 && (temp[k - 1][i][k] == 0 || temp[k - 1][k][j] == 0))
-                //     temp[k][i][j] = temp[k - 1][i][j];
-
-                // else if (temp[k - 1][i][j] == 0 && (temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0))
-                //     temp[k][i][j] = temp[k - 1][i][k] + temp[k - 1][k][j];
-
-                // else
-                //     temp[k][i][j] = 0;
-
-                if (temp[k - 1][i][k] == INT_MAX || temp[k - 1][k][j] == INT_MAX)
+                else if (temp[k - 1][i][j] != 0 && (temp[k - 1][i][k] == 0 || temp[k - 1][k][j] == 0))
                     temp[k][i][j] = temp[k - 1][i][j];
 
-                else
+                else if (temp[k - 1][i][j] == 0 && (temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0))
+                    temp[k][i][j] = temp[k - 1][i][k] + temp[k - 1][k][j];
+
+                else if (temp[k - 1][i][j] == 0 && temp[k - 1][i][k] != 0 && k == j)
                     temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
+
+                else
+                    temp[k][i][j] = 0;
+
+                // if (temp[k - 1][i][k] == INT_MAX || temp[k - 1][k][j] == INT_MAX)
+                //     temp[k][i][j] = temp[k - 1][i][j];
+
+                // else
+                //     temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
             }
         }
     }
 
-    if (temp[N - 1][i][j] != INT_MAX && temp[N - 1][i][j] != -1)
+    // if (temp[N - 1][i][j] != INT_MAX && temp[N - 1][i][j] != -1)
+    if (temp[N - 1][i][j])
         return temp[N - 1][i][j];
     return -1;
 }
