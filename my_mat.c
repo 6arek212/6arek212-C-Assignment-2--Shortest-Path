@@ -77,11 +77,22 @@ int shortestPath(int i, int j)
 
     for (int k = 1; k < N; k++)
     {
+
         for (int i = 0; i < N; i++)
         {
             for (int j = 0; j < N; j++)
             {
-                if (temp[k - 1][i][j] != 0 && temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0)
+
+                if (i == j)
+                {
+                    temp[k][i][j] = 0;
+                }
+                else if (i == k || j == k)
+                {
+                    temp[k][i][j] = temp[k - 1][i][j];
+                }
+
+                else if (temp[k - 1][i][j] != 0 && temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0)
                     temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
 
                 else if (temp[k - 1][i][j] != 0 && (temp[k - 1][i][k] == 0 || temp[k - 1][k][j] == 0))
@@ -89,10 +100,6 @@ int shortestPath(int i, int j)
 
                 else if (temp[k - 1][i][j] == 0 && (temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0))
                     temp[k][i][j] = temp[k - 1][i][k] + temp[k - 1][k][j];
-
-                else if (temp[k - 1][i][j] == 0 && temp[k - 1][i][k] != 0 && k == j)
-                    temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
-
                 else
                     temp[k][i][j] = 0;
 
