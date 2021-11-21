@@ -12,11 +12,10 @@ CC = gcc
 
 
 
-.PHONY : run
+.PHONY : all
 
 
-run: prog
-
+all: prog
 
 
 
