@@ -1,17 +1,37 @@
 
-Wall = -W
+Wall = -Wall
+CC = gcc
 
 .PHONY : clean 
 
 
-prog : main.o 
-	gcc ${W} -o prog main.o
 
 
 
-main.o : main.c 
+
+
+
+
+.PHONY : run
+
+
+run: prog
+
+
+
+
+prog : my_mat.o main.o 
+	${CC} -o prog my_mat.o main.o
+
+
+
+my_mat.o : my_mat.c my_mat.h 
+	${CC} -c my_mat.c
+
+
+
+main.o : main.c my_mat.h
 	gcc ${W} -c main.c
-
 
 
 clean : 
