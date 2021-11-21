@@ -7,13 +7,13 @@ int graph[N][N];
 
 void scanNewMatrix()
 {
-    printf("\n");
+    // printf("\n");
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
         {
-            printf("enter the weight between %d , %d \n", i, j);
-            scanf("%d", &graph[i][j]);
-            printf("\n");
+            // printf("enter the weight between %d , %d \n", i, j);
+            scanf(" %d", &graph[i][j]);
+            // printf("\n");
         }
 }
 

@@ -24,7 +24,7 @@ void main()
     while (choice != 'D')
     {
 
-        printOptions();
+        // printOptions();
 
         scanf(" %c", &choice);
 
@@ -35,20 +35,22 @@ void main()
             break;
 
         case 'B':
-            printf("enter i and j : \n");
+            // printf("enter i and j : \n");
             scanf("%d %d", &i, &j);
-            printf("\n");
+            // printf("\n");
 
             if (isTherePath(i, j))
-                printf("True");
+                printf("True\n");
             else
-                printf("False");
+                printf("False\n");
             break;
 
         case 'C':
-            printf("enter i and j");
+            // printf("enter i and j");
             scanf("%d %d", &i, &j);
-            printf("shortest path is %d", shortestPath(i, j));
+            // printf("shortest path is %d", shortestPath(i, j));
+
+            printf("%d\n", shortestPath(i, j));
             break;
 
         case 'K':
