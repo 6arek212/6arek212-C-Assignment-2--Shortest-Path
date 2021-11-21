@@ -1,7 +1,24 @@
 #include "my_mat.h"
 #include <stdio.h>
+#include <limits.h>
 
-int graph[N][N];
+// int graph[N][N] = {
+//     {0, 3, 1, 0, 0, 2, 0, 0, 0, 0},
+//     {3, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+//     {1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+//     {0, 0, 0, 0, 0, 0, 0, 5, 0, 0},
+//     {0, 0, 0, 0, 0, 0, 0, 4, 1, 1},
+//     {2, 0, 0, 0, 0, 0, 2, 0, 0, 0},
+//     {0, 0, 0, 0, 0, 2, 0, 0, 0, 0},
+//     {0, 0, 0, 5, 4, 0, 0, 0, 0, 2},
+//     {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+//     {0, 0, 0, 0, 1, 0, 0, 2, 0, 0}};
+
+int graph[N][N] = {
+    {0, 3, INT_MAX, 7},
+    {8, 0, 2, INT_MAX},
+    {5, INT_MAX, 0, 1},
+    {2, INT_MAX, INT_MAX, 0}};
 
 void scanNewMatrix()
 {
@@ -9,6 +26,10 @@ void scanNewMatrix()
         for (int j = 0; j < N; j++)
         {
             scanf(" %d", &graph[i][j]);
+            if (graph[i][j] == 0 && i != j)
+            {
+                graph[i][j] = INT_MAX;
+            }
         }
 }
 
@@ -28,7 +49,7 @@ void printMatrix()
 
 int isTherePath(int i, int j)
 {
-    if (graph[i][j])
+    if (graph[i][j] && graph[i][j] != INT_MAX)
         return 1;
     return 0;
 }
@@ -60,21 +81,28 @@ int shortestPath(int i, int j)
         {
             for (int j = 0; j < N; j++)
             {
-                if (temp[k - 1][i][j] != 0 && temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0)
-                    temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
+                // if (temp[k - 1][i][j] != 0 && temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0)
+                //     temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
 
-                else if (temp[k - 1][i][j] != 0 && (temp[k - 1][i][k] == 0 || temp[k - 1][k][j] == 0))
+                // else if (temp[k - 1][i][j] != 0 && (temp[k - 1][i][k] == 0 || temp[k - 1][k][j] == 0))
+                //     temp[k][i][j] = temp[k - 1][i][j];
+
+                // else if (temp[k - 1][i][j] == 0 && (temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0))
+                //     temp[k][i][j] = temp[k - 1][i][k] + temp[k - 1][k][j];
+
+                // else
+                //     temp[k][i][j] = 0;
+
+                if (temp[k - 1][i][k] == INT_MAX || temp[k - 1][k][j] == INT_MAX)
                     temp[k][i][j] = temp[k - 1][i][j];
 
-                else if (temp[k - 1][i][j] == 0 && (temp[k - 1][i][k] != 0 && temp[k - 1][k][j] != 0))
-                    temp[k][i][j] = temp[k - 1][i][k] + temp[k - 1][k][j];
-
                 else
-                    temp[k][i][j] = 0;
+                    temp[k][i][j] = min(temp[k - 1][i][j], temp[k - 1][i][k] + temp[k - 1][k][j]);
             }
         }
     }
 
-    return temp[N - 1][i][j];
+    if (temp[N - 1][i][j] != INT_MAX)
+        return temp[N - 1][i][j];
+    return -1;
 }
-
