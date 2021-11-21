@@ -102,7 +102,7 @@ int shortestPath(int i, int j)
         }
     }
 
-    if (temp[N - 1][i][j] != INT_MAX)
+    if (temp[N - 1][i][j] != INT_MAX && temp[N - 1][i][j] != -1)
         return temp[N - 1][i][j];
     return -1;
 }
