@@ -7,13 +7,10 @@ int graph[N][N];
 
 void scanNewMatrix()
 {
-    // printf("\n");
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
         {
-            // printf("enter the weight between %d , %d \n", i, j);
             scanf(" %d", &graph[i][j]);
-            // printf("\n");
         }
 }
 
@@ -83,15 +80,3 @@ int shortestPath(int i, int j)
     return temp[N - 1][i][j];
 }
 
-// int main(int argc, char const *argv[])
-// {
-//     int mat[N][N] = {
-//         {0, 3, 0, 7},
-//         {8, 0, 2, 0},
-//         {5, 0, 0, 1},
-//         {2, 0, 0, 0}};
-
-//     printf("\n %d \n", shortestPath(1, 2));
-
-//     return 0;
-// }
