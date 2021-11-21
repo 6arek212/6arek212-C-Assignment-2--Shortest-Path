@@ -15,12 +15,12 @@ CC = gcc
 .PHONY : all
 
 
-all: prog
+all: connections
 
 
 
-prog : my_mat.o main.o 
-	${CC} -o prog my_mat.o main.o
+connections : my_mat.o main.o 
+	${CC} -o connections my_mat.o main.o
 
 
 
@@ -34,4 +34,4 @@ main.o : main.c my_mat.h
 
 
 clean : 
-	rm -f prog *.o
+	rm -f connections *.o
