@@ -19,7 +19,7 @@ int main()
     while (choice != 'D')
     {
 
-        printOptions();
+        //printOptions();
 
         scanf(" %c", &choice);
 
@@ -30,12 +30,12 @@ int main()
             break;
 
         case 'B':
-            printf("enter i : \n");
+            //printf("enter i : \n");
             scanf("%d",&i);
-            printf("enter j : \n");
+            //printf("enter j : \n");
             scanf("%d",&j);
 
-            printf("\n");
+            //printf("\n");
 
             if (isTherePath(i, j))
                 printf("True \n");
@@ -44,11 +44,11 @@ int main()
             break;
 
         case 'C':
-            printf("enter i : \n");
+            //printf("enter i : \n");
             scanf("%d",&i);
-            printf("enter j : \n");
+            //printf("enter j : \n");
             scanf("%d",&j);
-            printf("\n");
+            //printf("\n");
             printf("%d \n", shortestPath(i, j));
             break;
 

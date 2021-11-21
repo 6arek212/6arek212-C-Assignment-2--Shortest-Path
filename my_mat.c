@@ -1,7 +1,5 @@
 #include "my_mat.h"
 #include <stdio.h>
-#include <limits.h>
-#include <stdio.h>
 
 int graph[N][N];
 
@@ -10,7 +8,7 @@ void scanNewMatrix()
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
         {
-            scanf("%d", &graph[i][j]);
+            scanf(" %d", &graph[i][j]);
         }
 }
 
